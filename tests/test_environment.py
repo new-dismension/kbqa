@@ -1,10 +1,11 @@
 # coding:utf-8
 
 import sys
-from os.path import abspath, join, dirname
-sys.path.insert(0, join(abspath(dirname('..'))))
+from os.path import abspath, join
+sys.path.insert(0, join(abspath('..')))
 
-import kbqa
-import kbqa.t
 
-print kbqa.a
+
+def init_environment():
+    pass
+
