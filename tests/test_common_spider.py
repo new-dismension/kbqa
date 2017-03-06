@@ -10,8 +10,6 @@ test_environment.init_environment()
 
 
 def test_get():
-    with open('test.html', 'w') as f:
-        f.write(spider.get('http://www.baidu.com/s?wd=特朗普妻子&nojs=1', None).encode('utf-8'))
     print(len(spider.get('http://www.baidu.com/s?wd=特朗普妻子&nojs=1', None)))
 
 

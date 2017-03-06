@@ -1,6 +1,7 @@
 # coding:utf-8
 
 
+from baidu_source import classify as baidu_classify
 
 
 class TemplateClassifier:
