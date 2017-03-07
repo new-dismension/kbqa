@@ -6,7 +6,13 @@ import kbqacn.common.spider as spider
 
 
 def search(sentence):
-    html = spider.get('http://www.baidu.com/s?wd=%s' % sentence, None)
+    r = spider.get('https://www.baidu.com/s?wd=%s' % sentence, None)
+    html = r.text
+    url = r.url
+
+    if url.find('verify.baidu.com') > 0:
+        raise(Exception('Need to be verified!'))
+
     return html
 
 
