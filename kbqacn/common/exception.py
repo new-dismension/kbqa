@@ -6,3 +6,6 @@ class SpiderError(Exception):
     pass
 
 
+class BaiduSpiderVerifiedError(Exception):
+    pass
+
