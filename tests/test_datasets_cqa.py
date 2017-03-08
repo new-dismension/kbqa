@@ -28,7 +28,7 @@ def temp_save(q, is_kbq):
 
     temp_data[q] = is_kbq
 
-    if spider_count % 50 == 0:
+    if spider_count % 1000 == 0:
         with open('datasets/cqa_question_data_kbq_0.json', 'w') as f:
             json.dump(temp_data, f)
 
