@@ -16,9 +16,6 @@ test_environment.init_environment()
 
 mutex = threading.Lock()
 
-temp_data = {
-}
-
 spider_count = 0
 
 def temp_save(q, is_kbq):
@@ -28,7 +25,8 @@ def temp_save(q, is_kbq):
 
     temp_data[q] = is_kbq
 
-    if spider_count % 1000 == 0:
+    if spider_count % 5 == 0:
+        print('save...')
         with open('datasets/cqa_question_data_kbq_0.json', 'w') as f:
             json.dump(temp_data, f)
 
@@ -99,6 +97,7 @@ def read_data_file(filename):
         f = training_f
         for line in f:
             question = line.split(None)[0]
+            question = question.decode('utf-8')
             if question not in data_dic:
                 data.append(question)
                 data_dic[question] = True
