@@ -21,6 +21,8 @@ def test_kb_search():
 
     print(baidu_kb_search('求好看的小说？'))
 
+    print(baidu_kb_search('xanxus的声优？'))
+
 def test():
 #    test_baidu_search()
     test_kb_search()
