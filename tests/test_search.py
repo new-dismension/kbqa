@@ -19,9 +19,10 @@ def test_kb_search():
     for k, v in a.items():
         print(k, v)
 
-    print(baidu_kb_search('求好看的小说？'))
+#    print(baidu_kb_search('求好看的小说？'))
 
-    print(baidu_kb_search('xanxus的声优？'))
+#    print(baidu_kb_search('xanxus的声优？'))
+    print(baidu_kb_search('红高粱的作者是谁？'))
 
 def test():
 #    test_baidu_search()

@@ -47,9 +47,14 @@ def kb_search(sentence):
     prop_div = soup.select('.op_exactqa_s_prop')
 
     if answer_div[0].string is None:
+        if answer_div[0].a is None:
+            return None
         answer = answer_div[0].a.string.replace(' ', '').replace('\n', '')
     else:
         answer = answer_div[0].string.replace(' ', '').replace('\n', '')
+
+    if prop_div[0].a is None:
+        return None
 
     entity = prop_div[0].a.string
     relation = prop_div[0].contents[-1].replace('\n', '').replace(' ', '')[:-1]

@@ -24,7 +24,7 @@ def temp_save(q, kb_res):
 
     temp_data[q] = kb_res
 
-    if spider_count % 1000 == 0:
+    if spider_count % 100 == 0:
         print('save...')
         with open('datasets/all_cqa_question_to_kb_data.json', 'w') as f:
             json.dump(temp_data, f)
@@ -35,6 +35,7 @@ def temp_save(q, kb_res):
 
 
 def kb_answer(question):
+    print('q: ', question)
     mutex.acquire()
     if question in temp_data:
         kb_res = temp_data[question]
@@ -58,17 +59,24 @@ def kb_answer(question):
     try:
         kb_res = baidu_kb_search(question)
     except BaiduSpiderVerifiedError:
-        kb_res = None
+        return None
 
     if kb_res is not None:
         print(str(spider_count) + ': ' + question)
         print('entity: ', kb_res['entity'])
         print('relation: ', kb_res['relation'])
         print('qnswer: ', kb_res['answer'])
+    else:
+        return None
 
     temp_save(question, kb_res)
 
-    return kb_res
+    return {
+        'question': question,
+        'answer': kb_res['answer'],
+        'entity': kb_res['entity'],
+        'relation': kb_res['relation'],
+    }
 
 
 def main():
