@@ -60,8 +60,8 @@ def kb_search(sentence):
     relation = prop_div[0].contents[-1].replace('\n', '').replace(' ', '')[:-1]
 
     return {
-        'answer': answer,
-        'entity': entity,
-        'relation': relation,
+        'answer': unicode(answer),
+        'entity': unicode(entity),
+        'relation': unicode(relation),
     }
 

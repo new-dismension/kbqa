@@ -8,6 +8,8 @@ from multiprocessing.dummy import Pool as ThreadPool
 from kbqacn.common.exception import BaiduSpiderVerifiedError
 import json
 import threading
+import gc
+import objgraph
 
 
 test_environment.init_environment()
@@ -28,6 +30,8 @@ def temp_save(q, kb_res):
         print('save...')
         with open('datasets/all_cqa_question_to_kb_data.json', 'w') as f:
             json.dump(temp_data, f)
+            gc.collect()
+            objgraph.show_most_common_types(limit=50)
 
     spider_count = spider_count + 1
 
